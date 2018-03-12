@@ -1,15 +1,36 @@
 from display import *
 from matrix import *
+import math
 
 
 def add_circle( points, cx, cy, cz, r, step ):
-    #x = f(t) = rcosϑ + x0 = rcos(2πt) + x0
-    #y = g(t) = rsinϑ + y0 = rsin(2πt) + y0
-    #use those equations, range is from 0 to 2π
-    #add_point to your points matrix
+    i = 0
+    lastx = cx + r
+    lasty = cy
+    while i < (2 * math.pi):
+        currx = int((r * math.cos(2 * math.pi * i)) + cx)
+        curry = int((r * math.sin(2 * math.pi * i)) + cy)
+        add_edge(points, lastx, lasty, cz, currx, curry, cz)
+        lastx = currx
+        lasty = curry
+        i += step
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
-    pass
+    ycoef = generate_curve_coefs(x0, x1, x2, x3, curve_type)
+    xcoef = generate_curve_coefs(y0, y1, y2, y3, curve_type)
+    i = 0.0
+    lastx = x0
+    lasty = y0
+    while i < (1 + step):
+        currx = 0
+        curry = 0
+        for cnt in range(4):
+            currx += xcoef[0][cnt] * math.pow(i, (3 - cnt))
+            curry += ycoef[0][cnt] * math.pow(i, (3 - cnt))
+        add_edge(points, lastx, lasty, 0, currx, curry, 0)
+        lastx = currx
+        lasty = curry
+
 
 
 

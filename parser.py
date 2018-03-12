@@ -38,7 +38,7 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save' ]
+ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'hermite', 'bezier' ]
 
 def parse_file( fname, edges, transform, screen, color ):
 
@@ -84,10 +84,21 @@ def parse_file( fname, edges, transform, screen, color ):
             matrix_mult(t, transform)
 
         elif line == 'circle':
+            add_circle(edges,float(args[0]), float(args[1]), float(args[2]),float(args[3]), 0.1)
 
         elif line == 'hermite':
+            add_curve(edges,float(args[0]), float(args[1]),
+                        float(args[2]),float(args[3]),
+                         float(args[4]),float(args[5]),
+                          float(args[6]),float(args[7]),
+                          (0.001),'hermite')
 
         elif line == 'bezier':
+            add_curve(edges,float(args[0]), float(args[1]),
+                        float(args[2]),float(args[3]),
+                         float(args[4]),float(args[5]),
+                          float(args[6]),float(args[7])
+                          (0.001),'bezier')
 
         elif line == 'ident':
             ident(transform)
