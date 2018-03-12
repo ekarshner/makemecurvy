@@ -1,6 +1,7 @@
 import math
 
 def make_bezier():
+    print 'make_bezier'
     final = new_matrix()
     final[0][0] = -1
     final[1][0] = 3
@@ -15,6 +16,7 @@ def make_bezier():
     return final
 
 def make_hermite():
+    print 'make_hermite'
     final = new_matrix()
     final[0][0] = 2
     final[1][0] = -2
@@ -29,6 +31,7 @@ def make_hermite():
     return final
 
 def generate_curve_coefs( p0, p1, p2, p3, type ):
+    print 'curve_coefs'
     final = new_matrix(4,1)
     pointlist = [p0, p1, p2, p3]
     i = 0
