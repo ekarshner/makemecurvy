@@ -2,48 +2,20 @@ import math
 
 def make_bezier():
     print 'make_bezier'
-    final = new_matrix()
-    final[0][0] = -1
-    final[1][0] = 3
-    final[2][0] = -3
-    final[3][0] = 1
-    final[0][1] = 3
-    final[1][1] = -6
-    final[2][1] = 3
-    final[0][2] = -3
-    final[1][2] = 3
-    final[0][3] = 1
-    return final
+    return [[-1,3,-3,1],[3,-6,3,0],[-3,3,0,0],[1,0,0,0]]
 
 def make_hermite():
     print 'make_hermite'
-    final = new_matrix()
-    final[0][0] = 2
-    final[1][0] = -2
-    final[2][0] = 1
-    final[3][0] = 1
-    final[0][1] = -3
-    final[1][1] = 3
-    final[2][1] = -2
-    final[3][1] = -1
-    final[2][2] = 1
-    final[0][3] = 1
-    return final
+    return [[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]]
 
 def generate_curve_coefs( p0, p1, p2, p3, type ):
     print 'curve_coefs'
-    final = new_matrix(4,1)
-    pointlist = [p0, p1, p2, p3]
-    i = 0
-    while i < 4:
-        final[0][i] = pointlist[i]
-        i += 1
+    final = [[p0, p1, p2, p3]]
     if type == 'hermite':
-        coeffmatrix = make_hermite()
+        matrix_mult(make_hermite(), final)
     else:
-        coeffmatrix = make_bezier()
+        matrix_mult(make_bezier(),  final)
 
-    matrix_mult(coeffmatrix, final)
     return final
 
 

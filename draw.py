@@ -20,20 +20,19 @@ def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
     print 'add_curve'
     ycoef = generate_curve_coefs(x0, x1, x2, x3, curve_type)
     xcoef = generate_curve_coefs(y0, y1, y2, y3, curve_type)
-    i = 0
+    i = 0.0
     lastx = x0
     lasty = y0
-    while i < 100:
+    while i < 1.0:
         currx = 0
         curry = 0
-        cnt = 0
-        while cnt < 4:
+        for cnt in range(4):
             currx += xcoef[0][cnt] * math.pow(i, (3 - cnt))
             curry += ycoef[0][cnt] * math.pow(i, (3 - cnt))
-            cnt += 1
-        add_edge(points, lastx, lasty, 0, currx, curry, 0)
+        add_edge(points, currx, curry, 0, lastx, lasty, 0)
         lastx = currx
         lasty = curry
+        i += step
 
 
 
