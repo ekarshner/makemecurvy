@@ -9,8 +9,8 @@ def add_circle( points, cx, cy, cz, r, step ):
     lastx = cx + r
     lasty = cy
     while i < (2 * math.pi):
-        currx = int((r * math.cos(2 * math.pi * i)) + cx)
-        curry = int((r * math.sin(2 * math.pi * i)) + cy)
+        currx = (r * math.cos(2 * math.pi * i) + cx)
+        curry = (r * math.sin(2 * math.pi * i) + cy)
         add_edge(points, lastx, lasty, cz, currx, curry, cz)
         lastx = currx
         lasty = curry
