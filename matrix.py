@@ -1,15 +1,15 @@
 import math
 
 def make_bezier():
-    print 'make_bezier'
+    #print 'make_bezier'
     return [[-1,3,-3,1],[3,-6,3,0],[-3,3,0,0],[1,0,0,0]]
 
 def make_hermite():
-    print 'make_hermite'
+    #print 'make_hermite'
     return [[2,-3,0,1],[-2,3,0,0],[1,-2,1,0],[1,-1,0,0]]
 
 def generate_curve_coefs( p0, p1, p2, p3, type ):
-    print 'curve_coefs'
+    #print 'curve_coefs'
     final = [[p0, p1, p2, p3]]
     if type == 'hermite':
         matrix_mult(make_hermite(), final)

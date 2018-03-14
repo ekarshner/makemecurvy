@@ -4,7 +4,7 @@ import math
 
 
 def add_circle( points, cx, cy, cz, r, step ):
-    print 'add_circle'
+    #print 'add_circle'
     i = 0
     lastx = cx + r
     lasty = cy
@@ -17,7 +17,7 @@ def add_circle( points, cx, cy, cz, r, step ):
         i += step
 
 def add_curve( points, x0, y0, x1, y1, x2, y2, x3, y3, step, curve_type ):
-    print 'add_curve'
+    #print 'add_curve'
     xcoef = generate_curve_coefs(x0, x1, x2, x3, curve_type)
     ycoef = generate_curve_coefs(y0, y1, y2, y3, curve_type)
     i = 0.0
